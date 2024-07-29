@@ -47,11 +47,25 @@ window.addEventListener("scroll", () => {
 });
 
 // Dark Mode Toggle
-darkModeToggle.addEventListener('click', () => {
+function toggleDarkMode() {
     body.classList.toggle('dark-mode');
-    document.querySelector(".hero img").classList.toggle('dark-mode');
-    darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    const isDarkMode = body.classList.contains('dark-mode');
+    darkModeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+}
+
+// Load Dark Mode from Local Storage
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeFromLocalStorage = localStorage.getItem('darkMode');
+    if (darkModeFromLocalStorage === 'enabled') {
+        body.classList.add('dark-mode');
+        darkModeToggle.textContent = '☀️';
+    } else {
+        darkModeToggle.textContent = '🌙';
+    }
 });
+
+darkModeToggle.addEventListener('click', toggleDarkMode);
 
 // Mobile Menu Toggle
 menuIcon.addEventListener('click', () => {

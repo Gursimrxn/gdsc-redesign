@@ -60,6 +60,11 @@ header {
     overflow: hidden;
 }
 
+body.dark-mode header {
+    background: var(--background-dark); /* Added line for dark mode */
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1); /* Optional: keeping the shadow subtle in dark mode */
+}
+
 /* Navigation */
 .navigation {
     position: fixed;
@@ -76,9 +81,9 @@ header {
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-body.dark-mode header{
-    background: var(--background-dark); /* Matching dark mode */
-    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+body.dark-mode .navigation {
+    background: var(--background-dark); /* Dark mode background */
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1); /* Optional: keeping the shadow subtle in dark mode */
 }
 
 .nav {
@@ -321,6 +326,7 @@ body.dark-mode .how-to-join {
     padding: 20px;
     width: calc(33.33% - 20px);
     transition: transform 0.2s ease, background-color 0.2s ease;
+    text-align: center;
 }
 
 body.dark-mode .event-card {
@@ -328,7 +334,7 @@ body.dark-mode .event-card {
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
-.event-card:hover {
+.event-card:hover, .team-card:hover {
     transform: translateY(-5px);
 }
 
@@ -436,6 +442,71 @@ body.dark-mode .team-card p {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Footer Styles */
+footer {
+    background-color: #333; /* Default background color */
+    color: #fff; /* Default text color */
+    padding: 10px 20px;
+    text-align: center;
+    position: relative; /* Ensure it positions correctly in relation to other elements */
+}
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 10px;
+}
+/* Footer link styles */
+footer a {
+    color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradient background */
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: inline-block;
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Footer link hover effect */
+footer a:hover {
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #ff006a);
+    background-size: 200% 200%;
+    animation: gradientShift 0.5s ease infinite alternate; 
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Keyframes for gradient shift effect */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode footer {
+    background-color: #1e1e1e; /* Darker background for dark mode */
+}
+
+body.dark-mode footer a {
+    color: transparent;
+    background: linear-gradient(45deg, #00c6ff, #0072ff); /* Maintain gradient colors in dark mode */
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+body.dark-mode footer a:hover {
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #ff006a);
+    background-size: 200% 200%;
+    animation: gradientShift 0.5s ease infinite alternate; 
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
     .hero h1 {
@@ -474,6 +545,14 @@ body.dark-mode .team-card p {
 
     body.dark-mode .nav-links {
         background-color: var(--background-dark); /* Dark mode background */
+    }
+    body.dark-mode.navigation {
+        background: var(--background-dark); /* Dark mode background */
+    }
+
+    body.dark-mode footer p{
+        background-color: var(--background-dark); /* Dark mode background */
+        color: var(--text-dark);
     }
 
     .nav-links.active {
