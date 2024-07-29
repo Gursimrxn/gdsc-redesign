@@ -31,29 +31,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Navigation Background Change on Scroll
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        nav.style.setProperty("background-color", "rgba(0, 0, 0, 0.1)");
+    if (window.scrollY > 800) {
+        nav.style.setProperty("background", "linear-gradient(45deg, rgba(255, 0, 102, 0.1), rgba(0, 204, 153, 0.1), rgba(0, 102, 255, 0.1), rgba(255, 204, 0, 0.1))");
         nav.style.setProperty("backdrop-filter", "blur(6.9px)");
-        nav.style.setProperty("box-shadow", "0 0 25px rgba(0, 0, 0, 0.5)");
+        nav.style.setProperty("box-shadow", "0 0 25px rgba(0, 0, 0, 0.2)");
         nav.style.setProperty("transform", "scale(1.005)");
+        nav.classList.add("scrolled");
     } else {
-        nav.style.setProperty("background-color", "rgba(0, 0, 0, 0.0)");
+        nav.style.setProperty("background", "inherit");
         nav.style.setProperty("backdrop-filter", "blur(0px)");
         nav.style.setProperty("box-shadow", "none");
         nav.style.setProperty("transform", "scale(1)");
+        nav.classList.remove("scrolled");
     }
 });
 
 // Dark Mode Toggle
 darkModeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
-    darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌓';
+    document.querySelector(".hero img").classList.toggle('dark-mode');
+    darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
 
 // Mobile Menu Toggle
 menuIcon.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
+
+function updateLogoText() {
+    const logoSpan = document.querySelector('.logo span');
+    if (window.innerWidth <= 600) {
+        logoSpan.innerHTML = "GDSC";
+    } else {
+        logoSpan.innerHTML = "GOOGLE DEVELOPERS STUDENT CLUB";
+    }
+}
+
+// Initial call
+updateLogoText();
+
+// Update on resize
+window.addEventListener('resize', updateLogoText);
 
 // Close menu when a link is clicked
 navLinks.querySelectorAll('a').forEach(link => {
@@ -138,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hero) {
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
-            hero.style.backgroundPosition = `50% ${100 - scrollPosition * 0.5}%`;
+            hero.style.backgroundPosition = `50% ${100 - scrollPosition * 0.069}%`;
         });
     }
 
