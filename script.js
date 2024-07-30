@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hero) {
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
-            hero.style.backgroundPosition = `50% ${100 - scrollPosition * 0.069}%`;
+            hero.style.backgroundPosition = `50% ${100 + scrollPosition * 0.169}%`;
         });
     }
 
