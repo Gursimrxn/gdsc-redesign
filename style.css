@@ -200,11 +200,8 @@ body.dark-mode .hero::before {
     backdrop-filter: blur(5px) brightness(0.6); /* Increased blur and reduced brightness for better contrast */
     background: linear-gradient(
         to bottom,
-        rgba(66, 133, 244, 0.5), /* Google Blue */
-        rgba(34, 193, 195, 0.2), /* Google Teal */
-        rgba(253, 187, 45, 0.2), /* Google Yellow */
-        rgba(255, 87, 34, 0.2), /* Google Red */
-        rgba(0, 0, 0, 0.8) /* Darker gradient at the bottom */
+        rgba(0, 0, 0, 0.5), /* Darker top gradient */
+        rgba(0, 0, 0, 0.8) /* Darker bottom gradient */
     );    
 }
 body.dark-mode .hero h1, 
