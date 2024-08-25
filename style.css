@@ -581,6 +581,7 @@ body.dark-mode footer a:hover {
 @media (max-width: 900px) {
     .hero h1 {
         font-size: 3rem;
+        letter-spacing: 2px;
     }
 
     .hero p {
