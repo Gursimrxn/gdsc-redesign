@@ -110,6 +110,7 @@ function handleIntersection(entries, observer) {
     });
 }
 
+
 // Intersection Observer Options
 const observerOptions = {
     threshold: 0.1
